@@ -5,6 +5,7 @@ import java.awt.image.*;
 import java.io.*;
 
 import javax.imageio.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -45,14 +46,18 @@ public class Glob
      * 
      * @param path is path to file with sprite
      * @return null if there are some problems
-     * @throws java.io.IOException
      */
-    public static Image getImage(String path) throws IOException
+    public static Image getImage(String path)
     {
         File f = new File(path);
         BufferedImage bi;
         
-        bi = ImageIO.read(f);
+        try {
+            bi = ImageIO.read(f);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "File " + path + " not found");
+            return null;
+        }
         return toImage(bi);
         
     }
@@ -66,15 +71,19 @@ public class Glob
      * @param dx how wide is one sprite
      * @param dy how high is one sprite
      * @return an array of sprites
-     * @throws java.io.IOException
      */
-    public static Image[] getTiles(String path,int dx, int dy) throws IOException
+    public static Image[] getTiles(String path,int dx, int dy) 
     {
         File f= new File(path);
         BufferedImage bi;
         Image[] erg;
         
-        bi = ImageIO.read(f);
+        try {
+            bi = ImageIO.read(f);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "File " + path + " not found");
+            return null;
+        }
         
         BufferedImage bis;
         int mx=bi.getWidth()/dx;
@@ -101,14 +110,17 @@ public class Glob
      * @param path path to file
      * @param width width of sprite in pixel
      * @param high high of sprite in pixel
-     * @return Image[step(0..2)][direction(0..3)] if you separated one NPC in one file
-     * @throws IOException 
+     * @return Image[step(0..2)][direction(0..3)] if you separated one NPC in one file 
      */
-    public static Image[][] getHeroAnimation(String path, int width, int high) throws IOException
+    public static Image[][] getHeroAnimation(String path, int width, int high) 
     {
         
-        BufferedImage bi=getBufferedImage(path);
+        BufferedImage bi;
+        bi = getBufferedImage(path);
         BufferedImage b;
+        
+        if(bi == null)
+            return null;
         
         Image[][] erg=new Image[bi.getWidth()/width][bi.getHeight()/high];
 
@@ -129,15 +141,19 @@ public class Glob
      * use getImage() instead
      * 
      * @param path
-     * @return
-     * @throws IOException 
+     * @return 
      */
-    public static BufferedImage getBufferedImage(String path) throws IOException
+    public static BufferedImage getBufferedImage(String path) 
     {
         File f= new File(path);
         BufferedImage bi;
         
-        bi = ImageIO.read(f);
+        try {
+            bi = ImageIO.read(f);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "File " + path + " not found");
+            return null;
+        }
         
         return bi;
     }
