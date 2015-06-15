@@ -26,7 +26,7 @@ public class Start {
     
     public static void main(String[] args) 
     {
-        JFrame frame = new JFrame("titel comes here");
+        JFrame frame = new JFrame("Life");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         
@@ -34,7 +34,7 @@ public class Start {
         panel.init();
         frame.add(panel);
         frame.pack();
-        
+        frame.setLocationRelativeTo(null);
         
         Timer t = new Timer(TIMER_DELAY, new ActionListener() {
 
