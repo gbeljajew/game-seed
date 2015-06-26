@@ -3,9 +3,12 @@ all you need to create a small game with java<br/>
 
 contains<br/>
 
-there are 3 classes:<br/>
+there are 4 classes:<br/>
 
 Start: it starts the game. i separated this one for one purpose - it can be used for smaller and biger games without many changes.
+<br/>
+StartInFullscreen: the same as Start only it starts your game in fullscreen.<br/>
+you need to implement a way to exit your game.
 <br/><br/>
 
 GamePanel: contains 3 methods for your code:<br/>
