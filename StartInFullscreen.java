@@ -37,7 +37,7 @@ public class StartInFullscreen {
         
         final GamePanel panel = new GamePanel();
         panel.init();
-        frame.add(panel);
+        frame.setContentPane(panel);
         
         Dimension desctop = Toolkit.getDefaultToolkit().getScreenSize();
         

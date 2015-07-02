@@ -32,7 +32,7 @@ public class Start {
         
         final GamePanel panel = new GamePanel();
         panel.init();
-        frame.add(panel);
+        frame.setContentPane(panel);
         frame.pack();
         frame.setLocationRelativeTo(null);
         
